@@ -12,29 +12,15 @@ export default function MiniCart() {
     return cart.subscribe((c) => {
       setItems(c?.cartItems);
     });
+    console.log("mini cart use effect end :: " + JSON.stringify(items));
   }, []);
-
-  // useEffect(() => {
-  //   console.log("Cart sub use effect");
-  //   console.log("Cart sub use effect cart :: " + JSON.stringify(cart));
-  //   console.log("Cart sub use effect cart value :: " + JSON.stringify(cart.value));
-  //   //setItems(cart.value?.cartItems);
-    
-  //   const refreshCart = () => {
-  //     cart.subscribe((c) => {
-  //       setItems(c?.cartItems);
-  //     });
-  //   }
-
-  //   return () => refreshCart();
-  // }, []);
 
   if (!items) return null;
 
   return (
     <>
       <span onClick={() => setShowCart(!showCart)} id="showcart_span">
-        <a href="#" id="showcart">Cart</a>
+        <img src="http://localhost:8080/images/cart.svg" alt="Cart" />
         {items.length}
       </span>
       {showCart && (

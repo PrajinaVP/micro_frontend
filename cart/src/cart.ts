@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { BehaviorSubject } from "rxjs";
 
+import { Cart } from "./CartInterface";
+
 const API_SERVER = "http://localhost:8080";
 
 export const jwt = new BehaviorSubject(null);
 export const cart = new BehaviorSubject(null);
 
-export const getCart = () =>
-  fetch(`${API_SERVER}/cart`, {
+export const getCart = (): Promise<Cart> => {
+  console.log("cart ts :: getCart ");
+  return fetch(`${API_SERVER}/cart`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt.value}`,
@@ -16,11 +19,15 @@ export const getCart = () =>
     .then((res) => res.json())
     .then((res) => {
       cart.next(res);
+      console.log("cart ts get cart res :: " + JSON.stringify(res));
       return res;
     });
 
-export const addToCart = (id) =>
-  fetch(`${API_SERVER}/cart`, {
+}
+  
+export const addToCart = (id): Promise<Cart> => {
+  console.log("cart ts :: addToCart id :: " + id);
+  return fetch(`${API_SERVER}/cart`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,8 +37,10 @@ export const addToCart = (id) =>
   })
     .then((res) => res.json())
     .then(() => {
-      getCart();
+      return getCart();
     });
+}
+  
 
 export const clearCart = () =>
   fetch(`${API_SERVER}/cart`, {

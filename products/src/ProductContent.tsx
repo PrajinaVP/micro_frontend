@@ -33,14 +33,14 @@ export default function PDPContent() {
       </div>
       <div>
         <div className="flex">
-          <h1 className="font-bold text-3xl flex-grow">{product.name}</h1>
-          <div className="font-bold text-3xl flex-end">
+          <h1 className="font-bold text-2xl flex-grow">{product.name}</h1>
+          <div className="font-bold flex-end text-2xl">
             {currency.format(product.price)}
           </div>
         </div>
         <div ref={addToCart}></div>
-        <div className="mt-10">{product.description}</div>
-        <div className="mt-10">{product.longDescription}</div>
+        <div className="mt-10 text-xl">{product.description}</div>
+        <div className="mt-10 text-lg">{product.longDescription}</div>
       </div>
     </div>
   );
