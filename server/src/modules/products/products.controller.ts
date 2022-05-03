@@ -13,8 +13,6 @@ export class ProductsController {
 
   @Get(':id')
   async show(@Param('id') id: string): Promise<Product> {
-    console.log("server id :: " + id);
-    console.log("stringified product find :: " + JSON.stringify(products.find((product) => product.id === parseInt(id))));
     return products.find((product) => product.id === parseInt(id));
   }
 }

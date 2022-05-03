@@ -9,7 +9,6 @@ export const getProducts = (): Promise<Product[]> => {
 }
 
 export const getProductById = (id): Promise<any> => {
-    console.log("getProductById:: " + id + "\nfetch :: " + `${API_SERVER}/products/${id}` );
     return fetch(`${API_SERVER}/products/${id}`)
         .then((res) => res.json())
         //.then(data => console.log("prod ts data :: " + JSON.stringify(data)))

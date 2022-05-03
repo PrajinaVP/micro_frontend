@@ -12,7 +12,6 @@ export default function MiniCart() {
     return cart.subscribe((c) => {
       setItems(c?.cartItems);
     });
-    console.log("mini cart use effect end :: " + JSON.stringify(items));
   }, []);
 
   if (!items) return null;

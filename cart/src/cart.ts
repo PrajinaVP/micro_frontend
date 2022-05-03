@@ -9,7 +9,6 @@ export const jwt = new BehaviorSubject(null);
 export const cart = new BehaviorSubject(null);
 
 export const getCart = (): Promise<Cart> => {
-  console.log("cart ts :: getCart ");
   return fetch(`${API_SERVER}/cart`, {
     headers: {
       "Content-Type": "application/json",
@@ -19,14 +18,12 @@ export const getCart = (): Promise<Cart> => {
     .then((res) => res.json())
     .then((res) => {
       cart.next(res);
-      console.log("cart ts get cart res :: " + JSON.stringify(res));
       return res;
     });
 
 }
   
 export const addToCart = (id): Promise<Cart> => {
-  console.log("cart ts :: addToCart id :: " + id);
   return fetch(`${API_SERVER}/cart`, {
     method: "POST",
     headers: {
